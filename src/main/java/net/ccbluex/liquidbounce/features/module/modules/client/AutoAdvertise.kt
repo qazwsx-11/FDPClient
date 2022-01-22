@@ -26,7 +26,7 @@ class AutoAdvertise : Module() {
         Timer().schedule(2000L) {
             waiting = false
             if (mc.thePlayer != null) {
-                mc.thePlayer.sendChatMessage("[" + RandomUtils.randomString(3) + "] Try FDPClient! ${LiquidBounce.CLIENT_WEBSITE} [" + RandomUtils.randomString(3) + "]")
+                mc.thePlayer.sendChatMessage("[" + RandomUtils.randomString(3) + "] try fdp client with private config - getfdp.today, discord.gg/3BemgGwPNt, only 25 invites [" + RandomUtils.randomString(3) + "]")
             }
         }
         waiting = true
