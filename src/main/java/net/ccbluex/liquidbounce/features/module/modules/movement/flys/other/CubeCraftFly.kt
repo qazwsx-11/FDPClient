@@ -2,11 +2,14 @@ package net.ccbluex.liquidbounce.features.module.modules.movement.flys.other
 
 import net.ccbluex.liquidbounce.event.MoveEvent
 import net.ccbluex.liquidbounce.event.UpdateEvent
+import net.ccbluex.liquidbounce.event.PacketEvent
 import net.ccbluex.liquidbounce.features.module.modules.movement.flys.FlyMode
 import net.ccbluex.liquidbounce.utils.MovementUtils
 import net.ccbluex.liquidbounce.utils.timer.TickTimer
 import kotlin.math.cos
 import kotlin.math.sin
+import net.minecraft.network.play.client.C03PacketPlayer
+
 
 class CubeCraftFly : FlyMode("CubeCraft") {
     private var timer = TickTimer()
@@ -27,6 +30,14 @@ class CubeCraftFly : FlyMode("CubeCraft") {
         } else {
             event.x = -sin(yaw) * 0.2
             event.z = cos(yaw) * 0.2
+        }
+    }
+    
+        override fun onPacket(event: PacketEvent) {
+        val packet = event.packet
+
+        if (packet is C03PacketPlayer) {
+            packet.onGround = true
         }
     }
 }
